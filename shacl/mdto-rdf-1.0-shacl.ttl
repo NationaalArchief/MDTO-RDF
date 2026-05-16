@@ -1,0 +1,775 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix mdto:    <http://www.nationaalarchief.nl/mdto#> .
+@prefix mdtosh:  <http://www.nationaalarchief.nl/mdto-shacl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+mdtosh: 
+    a owl:Ontology ;
+    rdfs:label "MDTO SHACL Shapes" .
+
+mdtosh:ObjectShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:Object ;
+    sh:name "ObjectShape" ;
+    sh:description "Een fysiek, digitaal of conceptueel ding in de werkelijkheid dat van belang is voor een organisatie." ;
+    sh:property mdtosh:IdentificatieShape ;
+    sh:property mdtosh:NaamShape .
+
+mdtosh:IdentificatieShape
+    a sh:NodeShape ; 
+    sh:path mdto:identificatie ;
+    sh:class mdto:IdentificatieGegevens;
+    sh:minCount 1 ;
+    sh:name "Identificatie" ;
+    sh:description "Gegevens waarmee het object geïdentificeerd kan worden." .
+
+mdtosh:NaamShape
+    a sh:NodeShape ;
+    sh:path mdto:naam ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:minLength 1 ;
+    sh:name "Naam" ;
+    sh:description "Een betekenisvolle aanduiding waaronder het object bekend is." .
+
+mdtosh:LocatieShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:Locatie ;
+    sh:property mdtosh:IdentificatieShape ;
+    sh:property mdtosh:NaamShape ;
+    sh:name "Locatie" .
+
+mdtosh:ActorShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:Actor ;
+    sh:property mdtosh:IdentificatieShape ;
+    sh:property mdtosh:NaamShape ;
+    sh:name "Actor" .
+
+mdtosh:BedrijfsactiviteitShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:Bedrijfsactiviteit ;
+    sh:property mdtosh:IdentificatieShape ;
+    sh:property mdtosh:NaamShape ;
+    sh:name "Bedrijfsactiviteit" .
+
+mdtosh:InformatieobjectShape
+    a sh:NodeShape ;
+    rdfs:subClassOf mdtosh:ObjectShape ;
+    sh:targetClass mdto:Informatieobject ;
+    sh:name "InformatieobjectShape" ;
+    sh:description "Een op zichzelf staand geheel van gegevens met een eigen identiteit." ;
+    sh:property mdtosh:IdentificatieShape ;
+    sh:property mdtosh:NaamShape ;
+    sh:property mdtosh:AggregatieniveauShape ;
+    sh:property mdtosh:ClassificatieShape ;
+    sh:property mdtosh:TrefwoordShape ;
+    sh:property mdtosh:OmschrijvingShape ;
+    sh:property mdtosh:RaadpleeglocatieShape ;
+    sh:property mdtosh:DekkingInTijdShape ;
+    sh:property mdtosh:DekkingInRuimteShape ;
+    sh:property mdtosh:TaalShape ;
+    sh:property mdtosh:EventShape ;
+    sh:property mdtosh:WaarderingShape ;
+    sh:property mdtosh:BewaartermijnShape ;
+    sh:property mdtosh:InformatiecategorieShape ;
+    sh:property mdtosh:IsOnderdeelVanShape ;
+    sh:property mdtosh:BevatOnderdeelShape ;
+    sh:property mdtosh:HeeftRepresentatieShape ;
+    sh:property mdtosh:AanvullendeMetagegevensShape ;
+    sh:property mdtosh:GerelateerdInformatieobjectShape ;
+    sh:property mdtosh:ArchiefvormerShape ;
+    sh:property mdtosh:BetrokkeneShape ;
+    sh:property mdtosh:ActiviteitShape ;
+    sh:property mdtosh:BeperkingGebruikShape .
+
+mdtosh:AggregatieniveauShape
+    a sh:NodeShape ;
+    sh:path mdto:aggregatieniveau ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Aggregatieniveau" ;
+    sh:description "Het aggregatieniveau van het informatieobject." .
+
+mdtosh:ClassificatieShape
+    a sh:NodeShape ;
+    sh:path mdto:classificatie ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 0 ;
+    sh:name "Classificatie" ;
+    sh:description "Ordening van informatieobjecten in een logisch verband, zoals vastgelegd in een classificatieschema." .
+
+mdtosh:TrefwoordShape
+    a sh:NodeShape ;
+    sh:path mdto:trefwoord ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ; 
+    sh:minLength 1 ;
+    sh:name "Trefwoord" ;
+    sh:description "Trefwoord dat aan het informatieobject is toegekend." .
+
+mdtosh:OmschrijvingShape
+    a sh:NodeShape ;
+    sh:path mdto:omschrijving ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ; 
+    sh:minLength 1 ;
+    sh:name "Omschrijving" ;
+    sh:description "Omschrijving van de inhoud van het informatieobject." .
+
+mdtosh:RaadpleeglocatieShape
+    a sh:NodeShape ;
+    sh:path mdto:raadpleeglocatie ;
+    sh:class mdto:RaadpleeglocatieGegevens ;
+    sh:minCount 0 ;
+    sh:name "Raadpleeglocatie" ;
+    sh:description "Actuele verwijzing naar de locatie waar het informatieobject ter inzage ligt." .
+
+mdtosh:DekkingInTijdShape
+    a sh:NodeShape ;
+    sh:path mdto:dekkingInTijd ;
+    sh:class mdto:DekkingInTijdGegevens ;
+    sh:minCount 0 ;
+    sh:name "Dekking in tijd" ;
+    sh:description "Een tijdstip of de periode waarop de inhoud van het informatieobject betrekking heeft." .
+
+mdtosh:DekkingInRuimteShape
+    a sh:NodeShape ;
+    sh:path mdto:dekkingInRuimte ;
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Locatie ;
+        ]
+    ) ;
+    sh:minCount 0 ;
+    sh:name "Dekking in ruimte" ;
+    sh:description "Plaats of locatie waar de inhoud van het informatieobject betrekking op heeft." .
+
+mdtosh:TaalShape
+    a sh:NodeShape ;
+    sh:path mdto:taal ;
+    sh:datatype xsd:language ;
+    sh:minCount 0 ;
+    sh:minLength 1 ;
+    sh:name "Taal" ;
+    sh:description "De taal waarin het informatieobject gesteld is." .
+
+mdtosh:EventShape
+    a sh:NodeShape ;
+    sh:path mdto:event ;
+    sh:class mdto:EventGegevens ;
+    sh:minCount 0 ; 
+    sh:name "Event" ;
+    sh:description "Gebeurtenis die heeft plaatsgevonden met betrekking tot het ontstaan, wijzigen, vernietigen en beheer van het informatieobject en de bijbehorende metagegevens." .
+   
+mdtosh:WaarderingShape
+    a sh:NodeShape ;
+    sh:path mdto:waardering ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Waardering" ;
+    sh:description "De waardering van het informatieobject volgens de van toepassing zijnde en vastgestelde selectielijst." .
+
+mdtosh:BewaartermijnShape
+    a sh:NodeShape ;
+    sh:path mdto:bewaartermijn ;
+    sh:class mdto:TermijnGegevens ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Bewaartermijn" ;
+    sh:description "Termijn waarin het informatieobject bewaard dient te worden, zoals gespecificeerd in de van toepassing zijnde en vastgestelde selectielijst." .
+    
+mdtosh:InformatiecategorieShape
+    a sh:NodeShape ;
+    sh:path mdto:informatiecategorie ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Informatiecategorie" ;
+    sh:description "De informatiecategorie uit een vastgestelde selectielijst of hotspotlijst waar de bewaartermijn op gebaseerd is." .
+
+mdtosh:IsOnderdeelVanShape
+    a sh:NodeShape ;
+    sh:path mdto:isOnderdeelVan ;
+    sh:class mdto:Informatieobject ;
+    sh:minCount 0 ; 
+    sh:name "Is onderdeel van" ;
+    sh:description "De direct bovenliggende aggregatie waar dit informatieobject onderdeel van is." .
+
+mdtosh:BevatOnderdeelShape
+    a sh:NodeShape ;
+    sh:path mdto:bevatOnderdeel ;
+    sh:class mdto:Informatieobject ;
+    sh:minCount 0 ;
+    sh:name "Bevat onderdeel" ;
+    sh:description "Een informatieobject dat direct onderliggend onderdeel is van deze aggregatie." .
+   
+mdtosh:HeeftRepresentatieShape
+    a sh:NodeShape ;
+    sh:path mdto:heeftRepresentatie ;
+    sh:class mdto:Bestand ;
+    sh:minCount 0 ;
+    sh:name "Heeft representatie" ;
+    sh:description "Verwijzing naar het bestand dat een (deel van een) representatie van het informatieobject is." .
+
+mdtosh:AanvullendeMetagegevensShape
+    a sh:NodeShape ;
+    sh:path mdto:aanvullendeMetagegevens ;
+    sh:class mdto:Bestand ;
+    sh:minCount 0 ;
+    sh:name "Aanvullende metagegevens" ;
+    sh:description "Verwijzing naar een bestand dat aanvullende (domeinspecifieke) metagegevens over het  informatieobject bevat." .
+
+mdtosh:GerelateerdInformatieobjectShape
+    a sh:NodeShape ;
+    sh:path mdto:gerelateerdInformatieobject ;
+    sh:class mdto:GerelateerdInformatieobjectGegevens ;
+    sh:minCount 0 ;
+    sh:name "Gerelateerd informatieobject" ;
+    sh:description "Relatie met een ander informatieobject dat relevant is binnen de context van het ontstaan, gebruik en/of beheer van dit informatieobject." .
+
+mdtosh:ArchiefvormerShape
+    a sh:NodeShape ;
+    sh:path mdto:archiefvormer ; 
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Actor ;
+        ]
+    ) ;
+    sh:minCount 1 ; 
+    sh:name "Archiefvormer" ;
+    sh:description "De organisatie die verantwoordelijk is voor het opmaken en/of ontvangen van het informatieobject." .
+
+mdtosh:BetrokkeneShape
+    a sh:NodeShape ;
+    sh:path mdto:betrokkene ;
+    sh:class mdto:BetrokkeneGegevens ;
+    sh:minCount 0 ; 
+    sh:name "Betrokkene" ;
+    sh:description "Persoon of organisatie die relevant is binnen de context van het ontstaan en gebruik van dit informatieobject , anders dan de archiefvormer." .
+
+mdtosh:ActiviteitShape
+    a sh:NodeShape ;
+    sh:path mdto:activiteit ;
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Bedrijfsactiviteit ;
+        ]
+    ) ;
+    sh:minCount 0 ; 
+    sh:maxCount 1 ;
+    sh:name "Activiteit" ;
+    sh:description "De bedrijfsactiviteit waarbij het informatieobject door de archiefvormer is ontvangen of gemaakt." .
+
+mdtosh:BeperkingGebruikShape
+    a sh:NodeShape ;
+    sh:path mdto:beperkingGebruik ;
+    sh:class mdto:BeperkingGebruikGegevens ;
+    sh:minCount 1 ; 
+    sh:name "Beperking gebruik" ;
+    sh:description "Een beperking die gesteld is aan het gebruik van het informatieobject." .
+
+mdtosh:BestandShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:Bestand ;
+    sh:name "BestandShape" ;
+    sh:property mdtosh:IdentificatieShape ;
+    sh:property mdtosh:NaamShape ;
+    sh:property mdtosh:OmvangShape ;
+    sh:property mdtosh:BestandsformaatShape ;
+    sh:property mdtosh:ChecksumShape ;
+    sh:property mdtosh:URLBestandShape ;
+    sh:property mdtosh:IsRepresentatieVanShape .
+
+mdtosh:OmvangShape
+    a sh:NodeShape ;
+    sh:path mdto:omvang ;
+    sh:datatype xsd:integer ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Omvang" ;
+    sh:description "Aantal bytes in het bestand." .
+
+mdtosh:BestandsformaatShape
+    a sh:NodeShape ;
+    sh:path mdto:bestandsformaat ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Bestandsformaat" ;
+    sh:description "De manier waarop de informatie in een computerbestand binair gecodeerd is." .
+
+mdtosh:ChecksumShape
+    a sh:NodeShape ;
+    sh:path mdto:checksum ;
+    sh:class mdto:ChecksumGegevens ;
+    sh:minCount 1 ;
+    sh:name "Checksum" ;
+    sh:description "Gegevens om te bepalen of het bestand beschadigd of gewijzigd is." .
+
+mdtosh:URLBestandShape
+    a sh:NodeShape ;
+    sh:path mdto:URLBestand ;
+    sh:datatype xsd:anyURI ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "URL bestand" ;
+    sh:description "Actuele verwijzing naar het bestand." .
+
+mdtosh:IsRepresentatieVanShape
+    a sh:NodeShape ;
+    sh:path mdto:isRepresentatieVan ;
+    sh:class mdto:Informatieobject ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Is representatie van" ;
+    sh:description "Verwijzing naar het informatieobject waarvan het bestand een (deel van de) fysieke representatie van is." .
+
+mdtosh:IdentificatieGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:IdentificatieGegevens ;
+    sh:property mdtosh:IdentificatieKenmerkShape ;
+    sh:property mdtosh:IdentificatieBronShape .
+
+mdtosh:IdentificatieBronShape
+    a sh:NodeShape ;
+    sh:path mdto:identificatieBron ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Bron" ;
+    sh:description "Herkomst van het kenmerk." .
+
+mdtosh:IdentificatieKenmerkShape
+    a sh:NodeShape ;
+    sh:path mdto:identificatieKenmerk ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Kenmerk" ;
+    sh:description "Een kenmerk waarmee een object geïdentificeerd kan worden." .
+
+mdtosh:VerwijzingGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:VerwijzingGegevens ;
+    sh:property mdtosh:VerwijzingNaamShape ;
+    sh:property mdtosh:VerwijzingIdentificatieShape .
+
+mdtosh:VerwijzingNaamShape
+    a sh:NodeShape ;
+    sh:path mdto:verwijzingNaam ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Naam" ;
+    sh:description "De naam van het object waarnaar verwezen wordt." .
+
+mdtosh:VerwijzingIdentificatieShape
+    a sh:NodeShape ;
+    sh:path mdto:verwijzingIdentificatie ;
+    sh:class mdto:IdentificatieGegevens ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Identificatie" ;
+    sh:description "De identificatie van het object waarnaar verwezen wordt." .
+
+mdtosh:BegripGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:BegripGegevens ;
+    sh:property mdtosh:BegripLabelShape ;
+    sh:property mdtosh:BegripCodeShape ;
+    sh:property mdtosh:BegripBegrippenlijstShape .
+
+mdtosh:BegripLabelShape
+    a sh:NodeShape ;
+    sh:path mdto:begripLabel ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Label" ;
+    sh:description "De tekstweergave van het begrip dat is toegekend in de begrippenlijst." .
+
+mdtosh:BegripCodeShape
+    a sh:NodeShape ;
+    sh:path mdto:begripCode ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Code" ;
+    sh:description "De code die aan het begrip is toegekend in de begrippenlijst." .
+
+mdtosh:BegripBegrippenlijstShape
+    a sh:NodeShape ;
+    sh:path mdto:begripBegrippenlijst ;
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Informatieobject ;
+        ]
+    ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Begrippenlijst" ;
+    sh:description "Een beschrijving van de begrippen die voor een bepaald toepassingsgebied gebruikt worden is opgesomd. Samen met hun betekenis en hun onderlinge relaties." .
+  
+
+mdtosh:DekkingInTijdGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:DekkingInTijdGegevens ;
+    sh:property mdtosh:DekkingInTijdTypeShape ;
+    sh:property mdtosh:DekkingInTijdBeginDatumShape ;
+    sh:property mdtosh:DekkingInTijdEindDatuShape .
+
+mdtosh:DekkingInTijdTypeShape
+    a sh:NodeShape ;
+    sh:path mdto:dekkingInTijdType ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Type";
+    sh:description "Nadere typering van het tijdstip of de periode waar de inhoud van het informatieobject betrekking op heeft." .
+
+mdtosh:DekkingInTijdBeginDatumShape
+    a sh:NodeShape ;
+    sh:path mdto:dekkingInTijdBeginDatum ;
+    sh:or (
+        [ 
+            sh:datatype xsd:date ;
+        ]
+        [   
+            sh:datatype xsd:gYearMonth ;
+        ]
+        [
+            sh:datatype xsd:gYear ;
+        ]
+    ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Begindatum" ;
+    sh:description "Datum waar de inhoud van het informatieobject betrekking op heeft. Bij een periode is dit de begindatum." .
+
+mdtosh:DekkingInTijdEindDatuShape
+    a sh:NodeShape ;
+    sh:path mdto:dekkingInTijdEindDatum ;
+    sh:or (
+        [ 
+            sh:datatype xsd:date ;
+        ]
+        [   
+            sh:datatype xsd:gYearMonth ;
+        ]
+        [
+            sh:datatype xsd:gYear ;
+        ]
+    ) ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Einddatum" ;
+    sh:description "Einddatum van de periode waar de inhoud van het informatieobject betrekking op heeft." .
+
+mdtosh:EventGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:EventGegevens ;
+    sh:property mdtosh:EventTypeShape ;
+    sh:property mdtosh:EventTijdShape ;
+    sh:property mdtosh:EventVerantwoordelijkeActorShape ;
+    sh:property mdtosh:EventResultaatShape .
+
+mdtosh:EventTypeShape
+    a sh:NodeShape ;
+    sh:path mdto:eventType ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Type" ;
+    sh:description "Aanduiding van het type event." .
+
+mdtosh:EventTijdShape
+    a sh:NodeShape ;
+    sh:path mdto:eventTijd ;
+    sh:or (
+        [ 
+            sh:datatype xsd:date ;
+        ]
+        [   
+            sh:datatype xsd:gYearMonth ;
+        ]
+        [
+            sh:datatype xsd:gYear ;
+        ]
+        [
+            sh:datatype xsd:dateTime ;
+        ]
+    ) ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Tijd" ;
+    sh:description "Het tijdstip waarop het event heeft plaatsgevonden." .
+
+mdtosh:EventVerantwoordelijkeActorShape
+    a sh:NodeShape ;
+    sh:path mdto:eventVerantwoordelijkeActor ;
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Actor ;
+        ]
+    ) ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Verantwoordelijke actor" ;
+    sh:description "De actor die verantwoordelijk was voor de gebeurtenis." .
+
+mdtosh:EventResultaatShape
+    a sh:NodeShape ;
+    sh:path mdto:eventResultaat ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Resultaat" ;
+    sh:description "Beschrijving van het resultaat van het event voor zover relevant voor de duurzame toegankelijkheid van het informatieobject." .
+
+mdtosh:GerelateerdInformatieobjectGegevensShape
+    a sh:NodeShape;
+    sh:targetClass mdto:GerelateerdInformatieobjectGegevens ;
+    sh:property mdtosh:GerelateerdInformatieobjectVerwijzingShape ;
+    sh:property mdtosh:GerelateerdInformatieobjectTypeRelatieShape .
+
+mdtosh:GerelateerdInformatieobjectVerwijzingShape
+    a sh:NodeShape ;
+    sh:path mdto:gerelateerdInformatieobjectVerwijzing ; 
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Informatieobject ;
+        ]
+    ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Verwijzing" ;
+    sh:description "Verwijzing naar het gerelateerde informatieobject." .
+
+mdtosh:GerelateerdInformatieobjectTypeRelatieShape
+    a sh:NodeShape ;
+    sh:path mdto:gerelateerdInformatieobjectTypeRelatie ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Type relatie" ;
+    sh:description "Typering van de relatie met het andere informatieobject." .
+
+mdtosh:BetrokkeneGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:BetrokkeneGegevens ;
+    sh:property mdtosh:BetrokkeneTypeRelatieShape ;
+    sh:property mdtosh:BetrokkeneActorShape .
+
+mdtosh:BetrokkeneTypeRelatieShape
+    a sh:NodeShape ;
+    sh:path mdto:betrokkeneTypeRelatie ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Type relatie" ;
+    sh:description "Typering van de betrokkenheid van de actor bij het informatieobject." .
+
+mdtosh:BetrokkeneActorShape
+    a sh:NodeShape ;
+    sh:path mdto:betrokkeneActor ;
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Actor ;
+        ]
+    ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Actor" ;
+    sh:description "De persoon of organisatie die betrokken is bij het informatieobject." .
+
+mdtosh:BeperkingGebruikGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:BeperkingGebruikGegevens ;
+    sh:property mdtosh:BeperkingGebruikTypeShape ;
+    sh:property mdtosh:BeperkingGebruikNadereBeschrijvingShape ;
+    sh:property mdtosh:BeperkingGebruikDocumentatieShape ;
+    sh:property mdtosh:BeperkingGebruikTermijnShape .
+
+mdtosh:BeperkingGebruikTypeShape
+    a sh:NodeShape ;
+    sh:path mdto:beperkingGebruikType ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Type" ;
+    sh:description "Typering van de beperking. Op grond waarvan bepaald kan worden wie toegang heeft tot het informatieobject en welke voorwaarden op het gebruik van toepassing zijn." .
+
+mdtosh:BeperkingGebruikNadereBeschrijvingShape
+    a sh:NodeShape ;
+    sh:path mdto:beperkingGebruikNadereBeschrijving ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:name "Nadere beschrijving" ;
+    sh:description "Nadere beschrijving van de beperking op het gebruik. Als aanvulling op beperkingGebruikType." .
+
+mdtosh:BeperkingGebruikDocumentatieShape
+    a sh:NodeShape ;
+    sh:path mdto:beperkingGebruikDocumentatie ;
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Informatieobject ;
+        ]
+    ) ;
+    sh:minCount 0 ;
+    sh:name "Documentatie" ;
+    sh:description "Verwijzing naar een tekstdocument waarin een nadere beschrijving van de beperking is opgenomen." .
+
+mdtosh:BeperkingGebruikTermijnShape
+    a sh:NodeShape ;
+    sh:path mdto:beperkingGebruikTermijn ;
+    sh:class mdto:TermijnGegevens ;
+    sh:minCount 0 ;
+    sh:name "Termijn" ;
+    sh:description "De termijn waarbinnen de beperking op het gebruik van toepassing is." .
+
+mdtosh:TermijnGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:TermijnGegevens ;
+    sh:property mdtosh:TermijnTriggerStartLooptijdShape ;
+    sh:property mdtosh:TermijnStartdatumLooptijdShape ;
+    sh:property mdtosh:TermijnLooptijdShape ;
+    sh:property mdtosh:TermijnEinddatumShape .
+
+mdtosh:TermijnTriggerStartLooptijdShape
+    a sh:NodeShape ;
+    sh:path mdto:termijnTriggerStartLooptijd ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 0 ;
+    sh:name "Trigger start looptijd" ;
+    sh:description "Gebeurtenis waarna de looptijd van de termijn start." .
+
+mdtosh:TermijnStartdatumLooptijdShape
+    a sh:NodeShape ;
+    sh:path mdto:termijnStartdatumLooptijd ;
+    sh:datatype xsd:date ;
+    sh:minCount 0 ;
+    sh:name "Startdatum looptijd" ;
+    sh:description "De datum waarop de trigger heeft plaatsgevonden en de looptijd is gestart." .
+
+mdtosh:TermijnLooptijdShape
+    a sh:NodeShape ;
+    sh:path mdto:termijnLooptijd ;
+    sh:datatype xsd:duration ;
+    sh:minCount 0 ;
+    sh:name "Looptijd" ;
+    sh:description "De hoeveelheid tijd waarin de termijnEinddatum bereikt wordt, nadat de trigger heeft plaatsgevonden." .
+
+mdtosh:TermijnEinddatumShape
+    a sh:NodeShape ;
+    sh:path mdto:termijnEinddatum ;
+    sh:or (
+        [ 
+            sh:datatype xsd:date ;
+        ]
+        [   
+            sh:datatype xsd:gYearMonth ;
+        ]
+        [
+            sh:datatype xsd:gYear ;
+        ]
+    ) ;
+    sh:minCount 0 ;
+    sh:name "Einddatum" ;
+    sh:description "Datum waarop de termijn eindigt." .
+
+mdtosh:ChecksumGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:ChecksumGegevens ;
+    sh:property mdtosh:ChecksumAlgoritmeShape ;
+    sh:property mdtosh:ChecksumWaardeShape ;
+    sh:property mdtosh:ChecksumDatumShape .
+
+mdtosh:ChecksumAlgoritmeShape
+    a sh:NodeShape ;
+    sh:path mdto:checksumAlgoritme ;
+    sh:class mdto:BegripGegevens ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Algoritme" ;
+    sh:description "Naam van het algoritme dat is gebruikt om de checksum te maken." .
+
+mdtosh:ChecksumWaardeShape
+    a sh:NodeShape ;
+    sh:path mdto:checksumWaarde ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Waarde" ;
+    sh:description "De waarde van de checksum." .
+
+mdtosh:ChecksumDatumShape
+    a sh:NodeShape ;
+    sh:path mdto:checksumDatum ;
+    sh:datatype xsd:dateTime ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:name "Datum checksum" ;
+    sh:description "Datum waarop de checksum is gemaakt." .
+
+mdtosh:RaadpleeglocatieGegevensShape
+    a sh:NodeShape ;
+    sh:targetClass mdto:RaadpleeglocatieGegevens ;
+    sh:property mdtosh:RaadpleeglocatieFysiekShape ;
+    sh:property mdtosh:RaadpleeglocatieOnlineShape .
+
+mdtosh:RaadpleeglocatieFysiekShape
+    a sh:NodeShape ;
+    sh:path mdto:raadpleeglocatieFysiek ;
+    sh:or (
+        [
+            sh:class mdto:VerwijzingGegevens ;  
+        ]
+        [   
+            sh:class mdto:Locatie ;
+        ]
+    ) ;
+    sh:minCount 0;
+    sh:name "Fysieke raadpleeglocatie" ;
+    sh:description "Actuele fysieke locatie waar het informatieobject ter inzage ligt." .
+
+mdtosh:RaadpleeglocatieOnlineShape
+    a sh:NodeShape ;
+    sh:path mdto:raadpleeglocatieOnline ;
+    sh:datatype xsd:anyURI ;
+    sh:minCount 0;
+    sh:name "Online raadpleeglocatie" ;
+    sh:description "Actuele verwijzing naar een online raadpleeglocatie die het informatieobject en de bijbehorende metagegevens weergeeft." .
+    

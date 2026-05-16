@@ -1,0 +1,884 @@
+# baseURI: http://www.nationaalarchief.nl/mdto
+# prefix: mdto
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mdto: <http://www.nationaalarchief.nl/mdto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+
+<http://www.nationaalarchief.nl/mdto>
+  rdf:type owl:Ontology ;
+  rdfs:comment "De RDF-ontologie van MDTO (Metagegevens Duurzaam Toegankelijke Overheidsinformatie)" ;
+  rdfs:label "MDTO" ;
+  owl:versionIRI <http://www.nationaalarchief.nl/mdto/0.9> ;
+  owl:versionInfo "0.9" ;
+  sh:suggestedShapesGraph <http://www.nationaalarchief.nl/mdto-shacl#> ;
+.
+mdto:Actor
+  rdf:type owl:Class ;
+  rdfs:label "Actor"@nl ;
+  rdfs:seeAlso <https://www.ica.org/standards/RiC/ontology#Agent> ;
+  rdfs:subClassOf mdto:Object ;
+  skos:definition "Persoon, groep, organisatie of functionaris."@nl ;
+  skos:example "Een overheidsorganisatie, een natuurlijk persoon, een bedrijf."@nl ;
+  skos:scopeNote """MDTO stelt geen nadere eisen aan de manier waarop een actor wordt vastgelegd. Idealiter wordt door middel van de identificatie van de actor verwezen naar een bestaande registratie, zoals het Actorenregister of de basisregistratie Handelsregister. In dat geval kan de naam van de actor ontleend worden aan die registratie.
+
+Merk op dat bij het vastleggen en verstrekken van persoonsgegevens over een actor beperkingen van toepassing zijn op grond van de Algemene verordening gegevensbescherming (AVG). MDTO doet geen uitspraken over welke persoonsgegevens mogen worden vastgelegd en beschikbaar gesteld op grond van de AVG."""@nl ;
+.
+mdto:Bedrijfsactiviteit
+  rdf:type owl:Class ;
+  dcterms:source "NEN-ISO 30300:2020" ;
+  rdfs:label "Bedrijfsactiviteit"@nl ;
+  rdfs:subClassOf mdto:Object ;
+  skos:definition "Een taak die wordt uitgevoerd door een organisatie. (Bron: NEN-ISO 30300:2020)"@nl ;
+  skos:example "Het verlenen van een vergunning, het uitgeven van rijbewijzen, het maken van beleid."@nl ;
+  skos:scopeNote "Binnen de context van MDTO wordt met een organisatie een overheidsorganisatie bedoeld."@nl ;
+.
+mdto:BegripGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Begrip gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:BeperkingGebruikGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Beperking gebruik gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:Bestand
+  rdf:type owl:Class ;
+  rdfs:label "Bestand"@nl ;
+  rdfs:seeAlso <https://www.ica.org/standards/RiC/ontology#Instantiation> ;
+  rdfs:subClassOf mdto:Object ;
+  skos:definition "Een geordende verzameling van gegevens in elektronische vorm, die door een elektronisch apparaat onder één naam kan worden behandeld en aangesproken."@nl ;
+  skos:example "Een audiobestand, een tekstbestand."@nl ;
+  skos:scopeNote "Voor meer toelichting zie de beschrijving van Bestand in de inleiding."@nl ;
+.
+mdto:BetrokkeneGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Betrokkene gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:ChecksumGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Checksum gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:DekkingInTijdGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Dekking in tijd gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:EventGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Event gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:Gegevensgroep
+  rdf:type owl:Class ;
+  rdfs:label "Gegevensgroep"@nl ;
+  rdfs:subClassOf owl:Thing ;
+.
+mdto:GerelateerdInformatieobjectGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Gerelateerd informatieobject gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:IdentificatieGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Identificatie gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:Informatieobject
+  rdf:type owl:Class ;
+  dcterms:source "https://www.nationaalarchief.nl/archiveren/kennisbank/informatieobject"^^xsd:anyURI ;
+  rdfs:label "Informatieobject"@nl ;
+  rdfs:seeAlso <https://www.ica.org/standards/RiC/ontology#Record> ;
+  rdfs:subClassOf mdto:Object ;
+  skos:definition "Een op zichzelf staand geheel van gegevens met een eigen identiteit."@nl ;
+  skos:example "Een document, een database, een dossier, een website."@nl ;
+  skos:scopeNote """Informatieobjecten in de context van MDTO zijn informatieobjecten die voortkomen uit de taken van de overheid.
+
+Informatieobject wordt ook wel archiefstuk of document genoemd in wet- en regelgeving.
+Een informatieobject dat is samengesteld uit andere, kleinere informatieobjecten is een aggregatie."""@nl ;
+.
+mdto:Locatie
+  rdf:type owl:Class ;
+  rdfs:label "Locatie"@nl ;
+  rdfs:seeAlso <http://bag.basisregistraties.overheid.nl/id/begrip/Object> ;
+  rdfs:seeAlso <http://definities.geostandaarden.nl/def/nen3610#GeoObject> ;
+  rdfs:subClassOf mdto:Object ;
+  skos:definition "Fysieke plaats in de ruimte."@nl ;
+  skos:example "Een BAG-locatie, een provincie, een weg."@nl ;
+  skos:scopeNote "MDTO stelt geen nadere eisen aan de manier waarop een locatie is vastgelegd. Idealiter wordt verwezen naar een begrip in een bestaande registratie, zoals de BAG. Of naar begrip in een bestaande begrippenlijst zoals die bijvoorbeeld gebruikt wordt door OWMS."@nl ;
+.
+mdto:Object
+  rdf:type owl:Class ;
+  rdfs:label "Object"@nl ;
+  rdfs:subClassOf owl:Thing ;
+  skos:definition "Een fysiek, digitaal of conceptueel ding in de werkelijkheid dat van belang is voor een organisatie."@nl ;
+  skos:example "Een locatie, een applicatie, een tekstdocument, een bedrijfsactiviteit, een brug, een auto."@nl ;
+.
+mdto:RaadpleeglocatieGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Raadpleeglocatie gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:TermijnGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Termijn gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:URLBestand
+  rdf:type owl:DatatypeProperty ;
+  mdto:doel "Beschikbaarheid: Via de verwijzing kan het bestand worden benaderd en ingezien."@nl ;
+  mdto:regels "De verwijzing naar het bestand is een URL conform RFC 3986."@nl ;
+  rdfs:domain mdto:Bestand ;
+  rdfs:label "URL Bestand"@nl ;
+  rdfs:range xsd:anyURI ;
+  skos:definition "Actuele verwijzing naar het bestand."@nl ;
+.
+mdto:VerwijzingGegevens
+  rdf:type owl:Class ;
+  rdfs:label "Verwijzing gegevens"@nl ;
+  rdfs:subClassOf mdto:Gegevensgroep ;
+.
+mdto:aanvullendeMetagegevens
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Interpreteerbaarheid: Aanvullende metagegevens maken het mogelijk om meer (domeinspecifieke) contextinformatie op te nemen bij een informatieobject."@nl ;
+  mdto:regels "In het bestandsformaat van het bestand moet opgenomen zijn wat de structuur en betekenis van de extra metagegevens zijn."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Aanvullende metagegevens"@nl ;
+  rdfs:range mdto:Bestand ;
+  skos:definition "Verwijzing naar een bestand dat aanvullende (domeinspecifieke) metagegevens over het  informatieobject bevat."@nl ;
+  skos:scopeNote "Dit attribuut maakt het mogelijk om aanvullende metagegevens, die niet in MDTO worden gespecificeerd, bij het informatieobject op te nemen. Hiermee wordt het ook mogelijk om de originele metagegevens te behouden nadat deze zijn geconverteerd naar MDTO."@nl ;
+.
+mdto:activiteit
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Interpreteerbaarheid: De bedrijfsactiviteit geeft invulling aan de context waarin een informatieobject gecreëerd of ontvangen is."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Activiteit"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Bedrijfsactiviteit
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  skos:definition "De bedrijfsactiviteit waarbij het informatieobject door de archiefvormer is ontvangen of gemaakt."@nl ;
+  skos:scopeNote """De bedrijfsactiviteit kan bijvoorbeeld het proces zijn dat, of het zaaktype die aan het informatieobject ten grondslag ligt. 
+Deze informatie zou ook kunnen worden afgeleid van het classificatieschema (zie classificatie), mits dit aansluit op de taken / processen van de organisatie."""@nl ;
+.
+mdto:aggregatieniveau
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Vindbaarheid: Zoeken op specifiek aggregatieniveau.
+Interpreteerbaarheid: Geeft informatie over de aard van het informatieobject."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Aggregatieniveau"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Het aggregatieniveau van het informatieobject."@nl ;
+  skos:scopeNote "Zie de inleiding voor meer toelichting over aggregaties."@nl ;
+.
+mdto:archiefvormer
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Vindbaarheid: Het kunnen vinden van een informatieobject aan de hand van de verantwoordelijke organisatie."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Archiefvormer"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Actor
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  rdfs:seeAlso dcterms:creator ;
+  skos:definition "De organisatie die verantwoordelijk is voor het opmaken en/of ontvangen van het informatieobject."@nl ;
+  skos:scopeNote """Onder archiefvormer wordt verstaan de (overheids)organisatie of het organisatieonderdeel waar het informatieobject gecreëerd of ontvangen is.
+
+Het betreft niet externe betrokkenen zoals afzenders (zoals burgers en bedrijven) van brieven of aanvragers van vergunningen. Deze worden beschreven met behulp van betrokkene. 
+
+Het gaat hier ook niet om de verantwoordelijkheid voor een beheeractiviteit (die wordt vastgelegd met behulp van event)."""@nl ;
+.
+mdto:begripBegrippenlijst
+  rdf:type owl:ObjectProperty ;
+  mdto:regels """1)	De begrippenlijst bevat minimaal de volgende onderdelen:
+•	Naam van de begrippenlijst.
+•	Versie (datum en, indien van toepassing, het versienummer).
+•	Beheerder van de begrippenlijst.
+•	Toepassingsgebied waar de begrippenlijst voor bedoeld is.
+•	Opsomming van alle toegestane begrippen binnen de begrippenlijst. 
+•	Per begrip (indien van toepassing):
+o	Code: De code die aan het begrip is toegekend. Moet uniek zijn binnen de begrippenlijst.
+o	Label: De tekstweergave van het begrip. Moet uniek zijn binnen de begrippenlijst.
+o	Definitie: Betekenis van het begrip
+o	Generiekere begrippen: Opsomming van de meer algemene (bovenliggende) begrippen binnen dezelfde begrippenlijst (‘broader term’). 
+o	Specifiekere begrippen: Opsomming van de minder algemene (onderliggende) begrippen in dezelfde begrippenlijst (‘narrower term’).
+2)	Als de begrippenlijst een voorgaande versie heeft, dan geldt:
+•	Alle begrippen uit de voorgaande versie komen in de nieuwe versie voor. Met dezelfde code, label, betekenis en minimaal dezelfde generiekere en specifiekere begrippen. De definitie mag anders geformuleerd zijn, als de betekenis maar hetzelfde is.
+•	Als een begrip uit de voorgaande versie in de nieuwe versie niet meer gebruikt wordt, dan wordt deze gemarkeerd als niet meer gebruikt (‘deprecated’). Hij blijft wel in de begrippenlijst staan zodat duidelijk is dat deze begrippen voor kunnen komen in eerder vastgelegde metagegevens.
+•	Als een begrip uit de voorgaande versie in de nieuwe versie vervangen is door een ander begrip, dan is deze van-naar-relatie beschreven en heeft het vervangende begrip dezelfde of een algemenere betekenis (‘mapping’)."""@nl ;
+  rdfs:domain mdto:BegripGegevens ;
+  rdfs:label "Begrippenlijst"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Informatieobject
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  rdfs:seeAlso skos:ConceptScheme ;
+  skos:definition "Een beschrijving van de begrippen die voor een bepaald toepassingsgebied gebruikt worden is opgesomd. Samen met hun betekenis en hun onderlinge relaties."@nl ;
+  skos:scopeNote """MDTO maakt gebruik van begrippenlijsten bij attributen waarvan de waarde uit een lijst gekozen moet worden. De begrippenlijst geeft dan aan welke waarden zijn toegestaan (de begrippen) en wat te betekenis van die begrippen is. Een begrippenlijst wordt ook wel aangeduid als een (gecontroleerde) woordenlijst of vocabulaire. 
+De informatie in een begrippenlijst kan voor verschillende toepassingen gebruikt worden:
+•	Validatie of een gebruikt begrip inderdaad in de begrippenlijst voorkomt.
+•	Opzoeken van de betekenis van een begrip
+•	Het samenstellen van een keuzelijst met toegestane waarden bij het invullen van metagegevens. De relaties met generiekere en specifiekere begrippen kunnen daarbij gebruikt worden voor een hiërarchische presentatie van de keuzelijst.
+•	Bepalen van de mogelijke waarden in de keuzenlijst van een zoekfunctie. 
+Deels zijn de toegestane begrippenlijsten in MDTO vastgelegd en deels kan de beheerder van de metagegevens zijn eigen begrippenlijsten bepalen. Als de beheerder eigen begrippenlijsten gebruikt is het van belang dat de begrippen duidelijk gedefileerd zijn in de begrippenlijst. Anders is het voor de gebruiker of toekomstige beheerder van de metagegevens niet duidelijk wat ze betekenen.
+MDTO stelt, vooralsnog, geen vormvoorschriften aan een begrippenlijst. Bijvoorbeeld een tekstdocument of een tabel kan voldoen. Mits aan de bovenstaande regels is voldaan. In principe wordt een begrippenlijst echter vastgelegd in SKOS (Simple Knowledge Organization System). Omdat SKOS geldt als de pas-toe-of-leg-uit standaard voor begrippenlijsten (zie https://www.forumstandaardisatie.nl/standaard/skos). In SKOS wordt een ‘begrip’ aangeduid als een ‘concept’. Een verwijzing naar een begrippenlijst kan ook een verwijzing naar een verzameling van (verder ongerelateerde) begrippenlijsten zijn.  
+
+Het is niet noodzakelijk dat in een begrippenlijsten over ‘begrip’ gesproken wordt. Deze kunnen bijvoorbeeld ook aangeduid zijn als ‘categorie’ of  ‘type’. 
+
+Bij voorkeur is de begrippenlijst zelf ook een open standaard. Open standaarden zijn door consensus tot stand gekomen. Hierdoor is de kans groter dat de begrippenlijst goed gedocumenteerd is en door meerdere archiefvormers wordt toegepast. Wat het voor de beheerder en gebruikers van het doelsysteem gemakkelijker maakt om de begrippenlijst te gebruiken.
+
+Bij het overdragen van informatieobjecten met MDTO-metagegevens naar een andere beheerder, is het mogelijk dat de ontvangende beheerder eisen stelt aan de gebruikte begrippenlijsten. Zodat hij in staat is de informatieobjecten en bestanden (geautomatiseerd) te valideren, te beheren, doorzoekbaar te maken en te presenteren op basis van de gebruikte begrippen. Aanbevolen wordt om hier tijdig afspraken over te maken."""@nl ;
+.
+mdto:begripCode
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:BegripGegevens ;
+  rdfs:label "Code"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "De code die aan het begrip is toegekend in de begrippenlijst."@nl ;
+  skos:scopeNote "In sommige begrippenlijsten hebben de begrippen een code om ze aan te duiden. De code is dan één van de manieren om een begrip aan te kunnen duiden, naast het label."@nl ;
+.
+mdto:begripLabel
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:BegripGegevens ;
+  rdfs:label "Label"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "De tekstweergave van het begrip dat is toegekend in de begrippenlijst."@nl ;
+  skos:scopeNote """menselijke lezing. Het label is één van de manieren om een begrip aan te kunnen duiden, naast de code. Indien er meerdere labels zijn vastgelegd, wordt hier het voorkeurslabel vermeld.
+
+Het verschil tussen label en code is niet altijd evident. Label is bedoeld om een duidelijke beschrijving te geven voor menselijke lezing."""@nl ;
+.
+mdto:beperkingGebruik
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Beschikbaarheid: De beheerders weten aan wie, hoe en onder welke voorwaarden een gebruiker toegang mag krijgen tot het informatieobject. De gebruiker weet wat hij met het informatieobject mag doen."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Beperking Gebruik"@nl ;
+  rdfs:range mdto:BeperkingGebruikGegevens ;
+  rdfs:seeAlso dcterms:accessRights ;
+  skos:definition "Een beperking die gesteld is aan het gebruik van het informatieobject."@nl ;
+  skos:scopeNote """Het betreft hier beperkingen aan het gebruik in de breedste zin van het woord. Zoals beperkingen vanuit wet- en regelgeving, een overeenkomst, een verdrag, een afspraak of beleid. Dit omvat, onder andere, beperkingen op grond van openbaarheidsbeperkingen, auteursrechten en geheimhouding.  
+  
+De beheerders en gebruikers van het informatieobject worden geacht de beperking te respecteren. Een informatieobject kan meerdere beperkingen hebben. Deze moeten dan allemaal gerespecteerd worden.
+
+Onvolledig of onjuist invullen van dit attribuut kan leiden tot onrechtmatig gebruik van het informatieobject. Als onbekend is of er een beperking is of wat de aard van de beperking is, dan wordt als beperkingGebruikType ‘Nader te bepalen’ gebruikt. Dit betekent dat in een later stadium (bijvoorbeeld bij een inzageverzoek) bepaald wordt welke beperking er geldt. Of de beheerder kan er voor kiezen om dit niet verder uit te zoeken en het informatieobject bij voorbaat beperkt beschikbaar te stellen (bijvoorbeeld alleen op de studiezaal)."""@nl ;
+.
+mdto:beperkingGebruikDocumentatie
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:BeperkingGebruikGegevens ;
+  rdfs:label "Documentatie"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Informatieobject
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  skos:definition "Verwijzing naar een tekstdocument waarin een nadere beschrijving van de beperking is opgenomen."@nl ;
+  skos:scopeNote "Soms zijn afspraken over een beperking in een afzonderlijk tekstdocument opgenomen. Dan verwijst dit attribuut daar naar."@nl ;
+.
+mdto:beperkingGebruikNadereBeschrijving
+  rdf:type owl:DatatypeProperty ;
+  mdto:regels "Heeft in ieder geval een waarde als beperkingGebruikType = “Overig”."@nl ;
+  rdfs:domain mdto:BeperkingGebruikGegevens ;
+  rdfs:label "Nadere beschrijving"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "Nadere beschrijving van de beperking op het gebruik. Als aanvulling op beperkingGebruikType."@nl ;
+  skos:scopeNote """Het is niet mogelijk om elk type beperking en de nuances daarop vast te leggen in beperkingGebruikType. In dat geval wordt de beperking nader beschreven in beperkingGebruikNadereBeschrijving. 
+
+Als dit attribuut een waarde heeft, dan is volledige automatische afhandeling van de beperking niet mogelijk. Vul dit attribuut daarom alleen in als beperkingGebruikType onvoldoende informatie geeft."""@nl ;
+.
+mdto:beperkingGebruikTermijn
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:BeperkingGebruikGegevens ;
+  rdfs:label "Termijn"@nl ;
+  rdfs:range mdto:TermijnGegevens ;
+  skos:definition "De termijn waarbinnen de beperking op het gebruik van toepassing is."@nl ;
+  skos:scopeNote """Een beperking kan tijdelijk van aard zijn. In dat geval geeft dit attribuut aan wanneer de beperking eindigt. Na afloop van deze termijn hoeft niet meer aan de beperking voldaan te worden.  
+
+Als dit attribuut geen waarde heeft, dan blijft de beperking voor altijd van toepassing. Of tot het moment van vernietiging."""@nl ;
+.
+mdto:beperkingGebruikType
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:BeperkingGebruikGegevens ;
+  rdfs:label "Type"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Typering van de beperking. Op grond waarvan bepaald kan worden wie toegang heeft tot het informatieobject en welke voorwaarden op het gebruik van toepassing zijn."@nl ;
+  skos:scopeNote """Dit attribuut is bedoeld om zo eenduidig mogelijk vast te leggen wat de aard van een beperking is. Op basis hiervan kunnen beleid voor toegang en gebruik worden gedefinieerd. Mogelijk kunnen hier  automatische acties aan verbonden worden. Zoals het beperken van de toegang tot bepaalde gebruikersgroepen. Of aan de gebruiker een akkoord op gebruiksvoorwaarden vragen voordat toegang verleend wordt. MDTO legt niet vast welk beleid en automatische acties aan een bepaald type beperking verbonden zijn. Dat is aan de beheerder om te bepalen. 
+
+Als onbekend is of er een beperking is of wat de aard van de beperking is, dan wordt het type ‘Nader te bepalen’ gebruikt (zie ook de toelichting bij beperkingGebruik).
+
+Als de beperking wel bekend is maar er is daarvoor geen type gedefinieerd, dan wordt het type ‘Overig’ gebruikt. In dat geval moet de aard van de beperking volledig in beperkingGebruikNadereBeschrijving beschreven worden."""@nl ;
+.
+mdto:bestandsformaat
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Leesbaarheid: Kan gebruikt worden om te bepalen welke applicatie nodig is om een informatieobject weer te kunnen geven."@nl ;
+  rdfs:domain mdto:Bestand ;
+  rdfs:label "Bestandsformaat"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  rdfs:seeAlso dcterms:format ;
+  skos:definition "De manier waarop de informatie in een computerbestand binair gecodeerd is."@nl ;
+  skos:scopeNote """Het bestandsformaat legt vast met welke syntaxis en semantiek de informatie in een reeks enen en nullen wordt vastgelegd en teruggelezen kan worden. De kennis van het formaat is essentieel voor het interpreteren van de gegevens. Gewoonlijk is de kennis vastgelegd in de broncode van een computerprogramma zodat de gebruiker hiervan niets hoeft te weten.
+
+Het geeft de benodigde informatie over de applicatie waarmee het bestand kan worden geraadpleegd d.m.v. de aanduiding van die applicatie. Indien er een PRONOM-ID of Media type (MIME) beschikbaar is dient deze hier te worden vastgelegd.
+ 
+PRONOM is een register van bestandsformaten dat wordt beheerd door de UK National Archives. Het PRONOM-ID is de meest specifieke aanduiding en heeft daardoor de voorkeur. Het beschrijven van het bestandsformaat aan de hand van het PRONOM-register zorgt voor de grootste mogelijkheden om het bestand leesbaar en interpreteerbaar te houden op lange termijn. Zie voor de mogelijke waarden https://www.nationalarchives.gov.uk/PRONOM/
+
+Media types (voorheen MIME) is een alternatieve standaard voor de identificatie van bestandsformaten. Voor een overzicht van Media types (MIME), zie  https://www.iana.org/assignments/media-types/."""@nl ;
+.
+mdto:betrokkene
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Vindbaarheid: het informatieobject kan aan de hand van de betrokkene(n) gevonden worden.
+Interpreteerbaarheid: kennis over de betrokkenen kan inzicht geven in de betekenis van het informatieobject. Bijvoorbeeld wie het geschreven heeft of wie er bij een vergadering aanwezig was plaatst de inhoud in een bepaald daglicht."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Betrokenne"@nl ;
+  rdfs:range mdto:BetrokkeneGegevens ;
+  skos:definition "Persoon of organisatie die relevant is binnen de context van het ontstaan en gebruik van dit informatieobject , anders dan de archiefvormer."@nl ;
+  skos:scopeNote """De archiefvormer is formeel verantwoordelijk voor de creatie of ontvangst van een informatieobject binnen de eigen organisatie. Daarnaast kunnen vaak andere personen of organisaties betrokken zijn bij de creatie van een informatieobject of een belang hebben bij de creatie, ontvangst en verdere behandeling van een informatieobject. Zoals de indiener van een WOB verzoek, de aanvrager van een vergunning of de medewerker waar een personeelsdossier betrekking op heeft. 
+
+Merk op dat bij het vastleggen en verstrekken van persoonsgegevens over een betrokkene beperkingen van toepassing zijn op grond van de Algemene verordening gegevensbescherming (AVG). MDTO doet geen uitspraken over welke persoonsgegevens mogen worden vastgelegd en beschikbaar gesteld op grond van de AVG."""@nl ;
+.
+mdto:betrokkeneActor
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:BetrokkeneGegevens ;
+  rdfs:label "Actor"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Actor
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  skos:definition "De persoon of organisatie die betrokken is bij het informatieobject."@nl ;
+  skos:scopeNote "Het betreft hier de identificatie en de naam van de betrokkene, zoals gedefinieerd bij de klasse Actor."@nl ;
+.
+mdto:betrokkeneTypeRelatie
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:BetrokkeneGegevens ;
+  rdfs:label "Type relatie"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Typering van de betrokkenheid van de actor bij het informatieobject."@nl ;
+  skos:scopeNote """Een persoon of organisatie kan verschillende belangen hebben.
+Een voorbeeld van een belang is wanneer iemand het onderwerp is van een informatieobject, bijvoorbeeld bij een personeelsdossier, of een rechtbankdossier. Een voorbeeld van een ander soort belang is wanneer het informatieobject een besluit betreft dat het belang van een persoon of organisatie direct of indirect treft. Bijvoorbeeld de bovenburen van een café dat een vergunning aanvraagt voor een terras, of voor de verruiming van haar openingstijden.
+
+Een andere betrokkene kan degene zijn (persoon of organisatie) die een aanvraag indient, bijvoorbeeld het café (of de eigenaar daarvan) dat de vergunning aanvraagt voor het plaatsen van een terras."""@nl ;
+.
+mdto:bevatOnderdeel
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Vindbaarheid: Op basis van dit attribuut kan vanuit een informatieobject gezocht worden op de onderliggende aggregaties. En omgekeerd kunnen bij een aggregatie de onderdelen gevonden worden.
+Interpreteerbaarheid: Door middel van aggregatieniveaus worden aan elkaar gerelateerde informatieobjecten gegroepeerd. Hiermee wordt mede duidelijk gemaakt wat de context van een informatieobject is.
+Interpreteerbaarheid: De waarde van sommige attributen van een aggregatie wordt doorgegeven aan zijn onderdelen (overerving)."""@nl ;
+  mdto:regels "Deze relatie mag niet cyclisch zijn. Dat wil zeggen dat een informatieobject geen onderdeel van zichzelf kan zijn via één of meerder stappen van deze relatie."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Bevat onderdeel"@nl ;
+  rdfs:range mdto:Informatieobject ;
+  rdfs:seeAlso dcterms:hasPart ;
+  owl:inverseOf mdto:isOnderdeelVan ;
+  skos:definition "Een informatieobject dat direct onderliggend onderdeel is van deze aggregatie."@nl ;
+  skos:scopeNote """De attributen isOnderdeelVan en bevatOnderdeel zijn elkaars omgekeerde. Dat wil zeggen dat de waarde van de ene is af te leiden van de andere. Het is daarom voldoende om de waarden van slechts één van beide attributen vast te leggen. 
+
+Deze relatie wordt ook wel de hiërarchische relatie tussen informatieobjecten genoemd. In sommige informatiesystemen komt dit overeen met de metafoor van mappen die zelf weer mappen en objecten bevatten.
+
+Bij het uitwisselen van de metagegevens van een enkel informatieobject moeten zowel isOnderdeelVan als bevatOnderdeel ingevuld zijn (waar van toepassing). Als de metagegevens van een hele collectie in een keer worden uitgewisseld, dan voldoet in de hele collectie de waarde van één van beide attributen. Mits alle boven- en onderliggende informatieobjecten in diezelfde collectie aanwezig zijn of al bekend zijn bij de ontvanger."""@nl ;
+.
+mdto:bewaartermijn
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Beschikbaarheid: geeft aan hoe lang een informatieobject beschikbaar dient te zijn."@nl ;
+  mdto:regels "De termijn dient alleen vastgelegd te worden als waardering de waarde “V” heeft."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Bewaartermijn"@nl ;
+  rdfs:range mdto:TermijnGegevens ;
+  skos:definition "Termijn waarin het informatieobject bewaard dient te worden, zoals gespecificeerd in de van toepassing zijnde en vastgestelde selectielijst."@nl ;
+  skos:scopeNote "Informatieobjecten kunnen een bewaartermijn hebben, op basis van een waardering uit een selectielijst. Ook een informatieobject dat een aggregatie is van andere, kleinere informatieobjecten kan een bewaartermijn hebben. Deze Termijn kan dan overerven op informatieobjecten die onderdeel zijn van die aggregatie. Het vastleggen van bewaartermijnen kan op termijn de aanleiding vormen voor andere beheeracties, zoals vernietiging of overbrenging van informatieobjecten naar een archiefbewaarplaats."@nl ;
+.
+mdto:checksum
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Betrouwbaarheid: Het kunnen controleren of een bestand technisch integer is."@nl ;
+  rdfs:domain mdto:Bestand ;
+  rdfs:label "Checksum"@nl ;
+  rdfs:range mdto:ChecksumGegevens ;
+  skos:definition "Gegevens om te bepalen of het bestand beschadigd of gewijzigd is."@nl ;
+.
+mdto:checksumAlgoritme
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:ChecksumGegevens ;
+  rdfs:label "Algoritme"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Naam van het algoritme dat is gebruikt om de checksum te maken."@nl ;
+  skos:scopeNote "De vermelding van het checksum algoritme maakt het mogelijk om aan de hand daarvan de checksum van een bestand te herberekenen en te controleren. Niet ieder checksum algoritme is even veilig, idealiter voldoet het gekozen algoritme aan de eisen of wensen die een organisatie heeft  met betrekking tot de integriteit van informatie. Het Forum Standaardisatie beveelt het gebruik van SHA-2 aan."@nl ;
+.
+mdto:checksumDatum
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:ChecksumGegevens ;
+  rdfs:label "Datum checksum"@nl ;
+  rdfs:range xsd:dateTime ;
+  skos:definition "Datum waarop de checksum is gemaakt."@nl ;
+.
+mdto:checksumWaarde
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:ChecksumGegevens ;
+  rdfs:label "Waarde"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "De waarde van de checksum."@nl ;
+  skos:scopeNote "Aan de hand van de checksum kan gecontroleerd worden of het bestand beschadigd is."@nl ;
+.
+mdto:classificatie
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Vindbaarheid: Op basis van de classificatie kan het informatieobject gevonden worden.
+Interpreteerbaarheid: Op basis van de classificatie kun je eigenschappen afleiden."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Classificatie"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Ordening van informatieobjecten in een logisch verband, zoals vastgelegd in een classificatieschema."@nl ;
+  skos:scopeNote """MDTO vereist geen toepassing van een specifiek classificatieschema. Welke classificaties worden ingevuld wordt bepaald door de classificaties zoals die binnen het bronproces worden gebruikt of mogelijk later als verrijking is toegevoegd.
+
+Een informatieobject kan volgens meerdere classificatieschema’s geclassificeerd zijn. Elke waarde van dit attribuut verwijst dan naar zijn eigen classificatieschema. Veel voorkomend is classificatie volgens het ordeningsplan van de organisatie. Maar classificatie kan ook gebruikt te worden om Informatieobjecten in te delen naar documenttype of zaakdossiers naar zaaktype.
+
+Merk op dat een classificatie soms hetzelfde uitdrukt als andere MDTO attributen. Zoals bijvoorbeeld archiefvormer of Bedrijfsactiviteit, die ook vaak onderdeel van het ordeningsplan zijn.
+
+Merk op dat de waarde van een classificatie een Begrip is. Dit begrip heeft zelf ook weer attributen die de kenmerken van de classificatie (zoals het classificatieschema) beschrijven.
+
+Bij het wijzigen of vervangen van een classificatieschema is het van belang dat de oude classificaties bewaard blijven, omdat dit mogelijk relevante informatie bevat. In een aangepast classificatieschema is terug te vinden hoe de oude waarden zich verhouden tot de nieuwe classificaties (mapping – het vergelijken van attributen en/of waarden in verschillende schema’s). Zie specificatie van begrippenlijst voor meer toelichting."""@nl ;
+.
+mdto:dekkingInRuimte
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Vindbaarheid: Het informatieobject kunnen vinden op basis van een plaats of locatie."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Dekking in ruimte"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Locatie
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  rdfs:seeAlso dcterms:spatial ;
+  skos:definition "Plaats of locatie waar de inhoud van het informatieobject betrekking op heeft."@nl ;
+  skos:scopeNote "Indien het informatieobject betrekking heeft op meerdere plaatsen of locaties, dan kunnen deze los van elkaar worden vastgelegd."@nl ;
+.
+mdto:dekkingInTijd
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Vindbaarheid: Maakt het zoeken op tijdstip of binnen een bepaalde periode mogelijk. Bijvoorbeeld zoeken naar een verslag op basis van de datum dat een vergadering heeft plaatsgevonden. 
+Beschikbaarheid: Sommige tijdstippen bepalen (mede)het moment van vernietigen. Zoals het moment van afwijzen van een vergunningaanvraag.
+Interpreteerbaarheid: Het tijdstip of periode bepaalt mede de betekenis van het informatieobject. Bijvoorbeeld wanneer een besluit geldig is."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Dekking in tijd"@nl ;
+  rdfs:range mdto:DekkingInTijdGegevens ;
+  rdfs:seeAlso dcterms:temporal ;
+  skos:definition "Een tijdstip of de periode waarop de inhoud van het informatieobject betrekking heeft."@nl ;
+  skos:scopeNote """Er zijn verschillende manieren waarop een informatieobject betrekking kan hebben op een tijdstip of periode. Welk tijdstip of periode bedoeld wordt is vastgelegd in het attribuut dekkingInTijd. 
+
+Het attribuut dekkingInTijd heeft betrekking op de inhoud van het informatieobject, niet op het informatieobject zelf. De tijd of periode van een handeling op het informatieobject zelf wordt vastgelegd in het attribuut event waarin deze handeling is beschreven. Zoals een wijziging, conversie of overbrenging. 
+
+Merk op dat het voor kan komen dat dekkingInTijd gelijk is aan de datum van een gerelateerd event. Zoals de creatiedatum van een zaakdossier en de startdatum van de behandeling van de zaak. Dit lijken misschien hetzelfde metagegeven. Maar het gaat om twee verschillende metagegevens die toevallig dezelfde waarde hebben. De creatiedatum heeft betrekking op het zaakdossier zelf, de startdatum van de behandeling heeft betrekking op de inhoud van het zaakdossier (namelijk de zaak zelf)."""@nl ;
+.
+mdto:dekkingInTijdBeginDatum
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:DekkingInTijdGegevens ;
+  rdfs:label "Begindatum"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          xsd:date
+          xsd:gYear
+          xsd:gYearMonth
+        ) ;
+    ] ;
+  skos:definition "Datum waar de inhoud van het informatieobject betrekking op heeft. Bij een periode is dit de begindatum."@nl ;
+  skos:scopeNote "Indien de exacte datum niet bekend is, kan volstaan worden met alleen het jaar en de maand of alleen het jaar."@nl ;
+.
+mdto:dekkingInTijdEindDatum
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:DekkingInTijdGegevens ;
+  rdfs:label "Einddatum"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          xsd:date
+          xsd:gYear
+          xsd:gYearMonth
+        ) ;
+    ] ;
+  skos:definition "Einddatum van de periode waar de inhoud van het informatieobject betrekking op heeft."@nl ;
+  skos:scopeNote "Indien de exacte datum niet bekend is, kan volstaan worden met het jaar en de maand of alleen het jaar."@nl ;
+.
+mdto:dekkingInTijdType
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:DekkingInTijdGegevens ;
+  rdfs:label "Type"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Nadere typering van het tijdstip of de periode waar de inhoud van het informatieobject betrekking op heeft."@nl ;
+.
+mdto:doel
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "Doel"@nl ;
+  skos:scopeNote "Waarom het van belang is om dit attribuut op te nemen in metagegevens. Vanuit het perspectief van duurzame toegankelijkheid. Bij de attributen van een gegevensgroep wordt geen doel vermeld."@nl ;
+.
+mdto:event
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Beschikbaarheid: Sommige events bepalen het moment van vernietigen. Zoals het sluiten van een dossier. 
+Betrouwbaarheid: Op basis van de events kan de mate van betrouwbaarheid worden beoordeeld. Bijvoorbeeld omdat er ongeoorloofde wijzigingen zijn aangebracht, of omdat er een conversie of migratie is uitgevoerd waarbij mogelijk informatie verloren is gegaan. 
+Interpreteerbaarheid: Bijvoorbeeld door wie en wanneer het informatieobject is gemaakt of gewijzigd bepaald mede de betekenis. Ook bepaalde bewerkingen kunnen de betekenis beïnvloeden. Bijvoorbeeld omdat daarbij essentiële kenmerken verloren zijn gegaan."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Event"@nl ;
+  rdfs:range mdto:EventGegevens ;
+  skos:definition "Gebeurtenis die heeft plaatsgevonden met betrekking tot het ontstaan, wijzigen, vernietigen en beheer van het informatieobject en de bijbehorende metagegevens."@nl ;
+  skos:scopeNote """Alle waarden voor event bij elkaar worden wel de eventgeschiedenis genoemd. De eventgeschiedenis beschrijft wat er in de loop van de tijd met het informatieobject is gebeurd. 
+
+Dit attribuut heeft betrekking op het informatieobject zelf, niet op de inhoud van het informatieobject. Gebeurtenissen die betrekking hebben op de inhoud van het informatieobject kunnen deels beschreven worden door het tijdstip of periode van de gebeurtenis vast te leggen in het attribuut dekkingInTijd. Bijvoorbeeld de periode waarin een wet van kracht is, of de datum waarop een vergadering heeft plaatsgevonden."""@nl ;
+.
+mdto:eventResultaat
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:EventGegevens ;
+  rdfs:label "Resultaat"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "Beschrijving van het resultaat van het event voor zover relevant voor de duurzame toegankelijkheid van het informatieobject."@nl ;
+  skos:scopeNote "Voor bepaalde events kan het resultaat relevant zijn voor de betrouwbaarheid of interpreteerbaarheid van het informatieobject. Met name als het event een proces omvat waarin controles worden uitgevoerd. Zoals bij een migratie of een conversie."@nl ;
+.
+mdto:eventTijd
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:EventGegevens ;
+  rdfs:label "Tijd"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          xsd:date
+          xsd:dateTime
+          xsd:gYear
+          xsd:gYearMonth
+        ) ;
+    ] ;
+  skos:definition "Het tijdstip waarop het event heeft plaatsgevonden."@nl ;
+  skos:scopeNote "Wanneer het exacte tijdstip niet bekend of niet relevant is, kan volstaan worden met het vermelden van de datum of een deel daarvan (zoals een jaar)."@nl ;
+.
+mdto:eventType
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:EventGegevens ;
+  rdfs:label "Type"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Aanduiding van het type event."@nl ;
+  skos:scopeNote """Met dit attribuut wordt onderscheid gemaakt tussen verschillende soorten events. Zodat duidelijk is wat de betekenis van het event is. 
+
+Het eventType kan gebruikt worden om automatische acties aan te verbinden. Zo kan bijvoorbeeld de bewaartermijn gestart worden op het moment van het afsluiten van een dossier."""@nl ;
+.
+mdto:eventVerantwoordelijkeActor
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:EventGegevens ;
+  rdfs:label "Verantwoordelijke actor"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Actor
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  skos:definition "De actor die verantwoordelijk was voor de gebeurtenis."@nl ;
+  skos:scopeNote """Het gaat in dit geval om de functionaris of organisatie die verantwoordelijk is voor het event, niet zozeer om personen.
+
+Merk op dat bij het vastleggen en verstrekken van persoonsgegevens over een actor beperkingen van toepassing zijn op grond van de Algemene verordening gegevensbescherming (AVG). MDTO doet geen uitspraken over welke persoonsgegevens mogen worden vastgelegd en beschikbaar gesteld op grond van de AVG."""@nl ;
+.
+mdto:gerelateerdInformatieobject
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Vindbaarheid: Het gerelateerde informatieobject kan via deze relatie gevonden worden. 
+Interpreteerbaarheid: Het gerelateerde informatieobject geeft vaak belangrijke contextinformatie voor de interpretatie van dit informatieobject."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Gerelateerd informatieobject"@nl ;
+  rdfs:range mdto:GerelateerdInformatieobjectGegevens ;
+  rdfs:seeAlso dcterms:relation ;
+  skos:definition "Relatie met een ander informatieobject dat relevant is binnen de context van het ontstaan, gebruik en/of beheer van dit informatieobject."@nl ;
+  skos:scopeNote """Dit attribuut kan gebruikt worden voor het vastleggen van willekeurige relaties tussen informatieobjecten (behalve de aggregatierelaties). Welke relaties relevant zijn is afhankelijk van de context waarbinnen het informatieobject is ontstaan en gebruikt. 
+
+Merk op dat dit attribuut niet gebruikt wordt voor het vastleggen van de aggregatierelaties tussen informatieobjecten. Daar is het attribuut isOnderdeelVan voor bedoeld."""@nl ;
+.
+mdto:gerelateerdInformatieobjectTypeRelatie
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:GerelateerdInformatieobjectGegevens ;
+  rdfs:label "Type relatie"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Typering van de relatie met het andere informatieobject."@nl ;
+  skos:scopeNote "Met dit attribuut kunnen verschillende type relaties worden vastgelegd, zoals een volgtijdelijke of functionele relatie."@nl ;
+.
+mdto:gerelateerdInformatieobjectVerwijzing
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:GerelateerdInformatieobjectGegevens ;
+  rdfs:label "Verwijzing"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Informatieobject
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  skos:definition "Verwijzing naar het gerelateerde informatieobject."@nl ;
+.
+mdto:heeftRepresentatie
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Vindbaar: Dit attribuut maakt het mogelijk om (een deel van) een representaties van een informatieobject te vinden."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Heeft representatie"@nl ;
+  rdfs:range mdto:Bestand ;
+  owl:inverseOf mdto:isRepresentatieVan ;
+  skos:definition "Verwijzing naar het bestand dat een (deel van een)  representatie van het informatieobject is."@nl ;
+  skos:scopeNote """Dit attribuut maakt het mogelijk om een informatieobject aan een bestand te relateren.
+
+Merk op dat wanneer het gaat om een bestand met aanvullende domeinspecifieke metagegevens, hier het attribuut aanvullendeMetagegevens voor wordt gebruikt.
+
+Manifestatie is een alternatieve term met dezelfde betekenis."""@nl ;
+.
+mdto:identificatie
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Vindbaarheid: met behulp van de identificatie kan het object gevonden worden, ook buiten de oorspronkelijke context."@nl ;
+  mdto:regels "Een eenmaal toegekende identificatie mag niet meer verwijderd worden."@nl ;
+  rdfs:domain mdto:Object ;
+  rdfs:label "Identificatie"@nl ;
+  rdfs:range mdto:IdentificatieGegevens ;
+  rdfs:seeAlso dcterms:identifier ;
+  skos:definition "Gegevens waarmee het object geïdentificeerd kan worden."@nl ;
+  skos:scopeNote "Een identificatie is permanent, oftewel deze mag niet meer verwijderd worden na toekenning. Een permanente identificatie is nodig om verwijzingen naar objecten ook in te toekomst te kunnen gebruiken."@nl ;
+.
+mdto:identificatieBron
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:IdentificatieGegevens ;
+  rdfs:label "Bron"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "Herkomst van het kenmerk."@nl ;
+  skos:scopeNote """Een identificatiekenmerk kan worden toegekend met behulp van een bepaalde systematiek, binnen een bepaalde applicatie, door een bepaalde organisatie of een individu. 
+
+Binnen een organisatie is de uniciteit van een identificatiekenmerk veelal nog wel gewaarborgd, maar zodra het daarbuiten wordt gepubliceerd wordt dat lastiger. Daarom wordt ook de bron vermeldt waarbinnen het identificatiekenmerk uniek moet zijn. Organisaties kunnen ervoor kiezen om een methode te gebruiken waarmee unieke identificatiekenmerken gegenereerd kunnen worden, zoals Universally Unique Identifiers (UUIDs)."""@nl ;
+.
+mdto:identificatieKenmerk
+  rdf:type owl:DatatypeProperty ;
+  mdto:regels "Het kenmerk is uniek binnen de bijbehorende bron." ;
+  rdfs:domain mdto:IdentificatieGegevens ;
+  rdfs:label "Kenmerk"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "Een kenmerk waarmee een object geïdentificeerd kan worden."@nl ;
+  skos:scopeNote "Een uniek kenmerk is nodig om objecten van elkaar te kunnen onderscheiden. Het is mogelijk dat er in de loop van de tijd meerdere kenmerken aan objecten worden toegekend, in dat geval is het van belang dat eerder toegekende kenmerken behouden blijven."@nl ;
+.
+mdto:informatiecategorie
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Interpreteerbaarheid: Het kunnen vaststellen van de informatiecategorie waarop de bewaartermijn gebaseerd is."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Informatiecategorie"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "De informatiecategorie uit een vastgestelde selectielijst of hotspotlijst waar de bewaartermijn op gebaseerd is."@nl ;
+  skos:scopeNote """Een selectielijst vermeldt de bewaartermijn per categorie informatieobjecten. Door middel van dit attribuut wordt de betreffende informatiecategorie uit de selectielijst aangegeven.
+
+MDTO beschouwd de informatiecategorieën als begrippen. Waarbij een selectielijst een begrippenlijst is die de begrippen definieert. Waarbij de code van het Begrip de codering in de selectielijst is en het label de titel in de selectielijst (zie voorbeelden hieronder). De beschrijvingen van de informatiecategorieën in de selectielijst zijn de definities van de betreffende begrippen. Het is niet nodig om een selectielijst naar een andere vorm om te zetten om deze als begrippenlijst te gebruiken. Mits de selectielijst duidelijk aangeeft hoe de categorieën heten en hoe ze gedefinieerd zijn."""@nl ;
+.
+mdto:isOnderdeelVan
+  rdf:type owl:ObjectProperty ;
+  mdto:doel """Vindbaarheid: Op basis van dit attribuut kan vanuit een informatieobject gezocht worden naar de bovenliggende aggregaties. En omgekeerd kunnen bij een aggregatie de informatieobjecten die daar onderdeel van zijn gevonden worden.
+Interpreteerbaarheid: Door middel van aggregatie worden aan elkaar gerelateerde informatieobjecten gegroepeerd. Hiermee wordt mede duidelijk gemaakt wat de context van een informatieobject is.
+Interpreteerbaarheid: De waarde van sommige attributen van een aggregatie wordt doorgegeven aan zijn onderdelen (overerving)."""@nl ;
+  mdto:regels "Deze relatie mag niet cyclisch zijn. Dat wil zeggen dat een informatieobject geen onderdeel van zichzelf kan zijn via één of meerder stappen van deze relatie."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Is onderdeel van"@nl ;
+  rdfs:range mdto:Informatieobject ;
+  rdfs:seeAlso dcterms:isPartOf ;
+  owl:inverseOf mdto:bevatOnderdeel ;
+  skos:definition "De direct bovenliggende aggregatie waar dit informatieobject onderdeel van is."@nl ;
+  skos:scopeNote """De attributen isOnderdeelVan en bevatOnderdeel zijn elkaars omgekeerde. Dat wil zeggen dat de waarde van de ene is af te leiden van de andere. Het is daarom voldoende om de waarden van slechts één van beide attributen vast te leggen. 
+
+Deze relatie wordt ook wel de hiërarchische relatie tussen informatieobjecten genoemd. In sommige informatiesystemen komt dit overeen met de metafoor van mappen die zelf weer mappen en objecten bevatten.
+
+Bij het uitwisselen van de metagegevens van een enkel informatieobject moeten zowel isOnderdeelVan als bevatOnderdeel ingevuld zijn (waar van toepassing). Als de metagegevens van een hele collectie in een keer worden uitgewisseld, dan voldoet in de hele collectie de waarde van één van beide attributen. Mits alle boven- en onderliggende Informatieobjecten in diezelfde collectie aanwezig zijn of al bekend zijn bij de ontvanger."""@nl ;
+.
+mdto:isRepresentatieVan
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Vindbaarheid: Dit attribuut maakt het mogelijk om het informatieobject te vinden waar het bestand een (deel van de) fysieke representatie van is."@nl ;
+  rdfs:domain mdto:Bestand ;
+  rdfs:label "Is representatie van"@nl ;
+  rdfs:range mdto:Informatieobject ;
+  owl:inverseOf mdto:heeftRepresentatie ;
+  skos:definition "Verwijzing naar het informatieobject waarvan het bestand een (deel van de) fysieke representatie van is."@nl ;
+.
+mdto:naam
+  rdf:type owl:DatatypeProperty ;
+  mdto:doel "Vindbaarheid: Het object kan gevonden worden op basis van de naam. Bij de presentatie van zoekresultaten en verwijzingen naar objecten wordt vaak de naam getoond."@nl ;
+  rdfs:domain mdto:Object ;
+  rdfs:label "Naam"@nl ;
+  rdfs:range xsd:string ;
+  rdfs:seeAlso dcterms:title ;
+  skos:definition "Een betekenisvolle aanduiding waaronder het object bekend is."@nl ;
+  skos:scopeNote """Het wordt aanbevolen om een naam te kiezen die betekenisvoller is voor anderen dan de direct betrokkenen. Bijvoorbeeld door een beknopte, specifieke omschrijving van de inhoud op te nemen. Denk hierbij aan een aanduiding van onderwerp, plaats en tijd. 
+
+MDTO schrijft geen maximale lengte voor, maar het wordt aanbevolen om een naam te kiezen van maximaal 80 karakters. Dit zorgt er bijvoorbeeld voor dat de naam in de presentatie van zoekresultaten volledig getoond kan worden.
+
+Dit wordt, naast ‘naam’, ook wel eens ‘titel’ genoemd."""@nl ;
+.
+mdto:omschrijving
+  rdf:type owl:DatatypeProperty ;
+  mdto:doel """Vindbaar: Zoekmachines gebruiken vaak treffers die worden gevonden in de omschrijving om resultaten te prioriteren en ook worden (delen van) omschrijvingen vaak getoond in de zoekresultaten. Dit helpt de gebruiker om te bepalen welk informatieobject degene is die wordt gezocht.
+Interpreteerbaar: een omschrijving geeft de mogelijkheid om een informatieobject snel te kunnen interpreteren."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Omschrijving"@nl ;
+  rdfs:range xsd:string ;
+  rdfs:seeAlso dcterms:description ;
+  skos:definition "Omschrijving van de inhoud van het informatieobject."@nl ;
+  skos:scopeNote """MDTO stelt geen bovengrens aan de lengte van de omschrijving. Omdat elke grens arbitrair is. Een redelijke grens is 2000 tot 3000 tekens. Een omschrijving die langer is schiet over het algemeen zijn doel voorbij. Het effect kan zijn dat maar een deel van de omschrijving wordt  getoond door een zoekmachine. 
+
+Het is mogelijk dat er meerdere omschrijvingen van een informatieobject zijn, bijvoorbeeld als er op een later moment een alternatieve omschrijving wordt toegevoegd. Dat zal naar verwachting niet vaak voorkomen."""@nl ;
+.
+mdto:omvang
+  rdf:type owl:DatatypeProperty ;
+  mdto:doel "Beschikbaarheid: De omvang van een bestand kan relevant zijn voor de manier van beschikbaarstelling. Gegevens over fysieke grootte zijn van belang voor het bepalen van opslagcapaciteit, bij het verzenden van het bestand (benodigde bandbreedte) en bij het willen raadplegen."@nl ;
+  rdfs:domain mdto:Bestand ;
+  rdfs:label "Omvang"@nl ;
+  rdfs:range xsd:integer ;
+  skos:definition "Aantal bytes in het bestand."@nl ;
+  skos:scopeNote "Gegevens over fysieke grootte kunnen van belang zijn voor het bepalen van opslagcapaciteit, bij het verzenden van het bestand (kan het als bijlage bij een e-mail of is een file transfer service nodig?) of bij het willen raadplegen (is renderen van het bestand of downloaden de beste optie?)."@nl ;
+.
+mdto:raadpleeglocatie
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Beschikbaarheid: Als het informatieobject niet online beschikbaar is, dan is inzage op de raadpleeglocatie mogelijk. Tenzij een beperking op het gebruik dit niet toestaat."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Raadpleeglocatie"@nl ;
+  rdfs:range mdto:RaadpleeglocatieGegevens ;
+  skos:definition "Actuele verwijzing naar de locatie waar het informatieobject ter inzage ligt."@nl ;
+  skos:scopeNote "Een raadpleeglocatie kan voorkomen bij analoge en digitale Informatieobjecten. Bijvoorbeeld de plaats waar een tekstdocument op papier of een andere informatiedrager ter inzage ligt. Of waar een voorziening staat waarmee een beperkt openbaar digitaal informatieobject ingezien kan worden. Beperkt openbare informatieobjecten zijn daarbij alleen te raadplegen door diegene die daar recht op heeft."@nl ;
+.
+mdto:raadpleeglocatieFysiek
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:RaadpleeglocatieGegevens ;
+  rdfs:label "Fysieke raadpleeglocatie"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          mdto:Locatie
+          mdto:VerwijzingGegevens
+        ) ;
+    ] ;
+  skos:definition "Actuele fysieke locatie waar het informatieobject ter inzage ligt."@nl ;
+  skos:scopeNote """Een raadpleeglocatie kan aangeduid worden met een organisatie, als daarmee duidelijk is welke fysieke locatie daarmee bedoeld wordt.
+
+Merk op dat voor online raadpleeglocatie het attribuut Online raadpleeglocatie wordt gebruikt."""@nl ;
+.
+mdto:raadpleeglocatieOnline
+  rdf:type owl:DatatypeProperty ;
+  mdto:regels "De verwijzing naar de online raadpleeglocatie is een URL conform RFC 3986."@nl ;
+  rdfs:domain mdto:RaadpleeglocatieGegevens ;
+  rdfs:label "Online raadpleeglocatie"@nl ;
+  rdfs:range xsd:anyURI ;
+  skos:definition "Actuele verwijzing naar een online raadpleeglocatie die het informatieobject en de bijbehorende metagegevens weergeeft."@nl ;
+  skos:scopeNote """MDTO schrijft niet voor hoe het informatieobject op de online raadpleeglocatie wordt weergegeven. De weergave kan uit meerdere webpagina’s bestaan. De online raadpleeglocatie is dan de startpagina vanaf waar de andere pagina’s bereikbaar zijn. Bijvoorbeeld een startpagina met verwijzingen naar een losse pagina met de metagegevens en naar de onderdelen waar het informatieobject uit bestaat.
+
+Online kan zowel op het internet als op een besloten netwerk zijn."""@nl ;
+.
+mdto:regels
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "Regels"@nl ;
+  skos:scopeNote "Nadere eisen waar de waarden van dit attribuut aan moeten voldoen. Hierin kan verwezen worden naar waarden van andere attributen."@nl ;
+.
+mdto:taal
+  rdf:type owl:DatatypeProperty ;
+  mdto:doel """Vindbaarheid: het kunnen vinden van een informatieobject in de gewenste taal.
+Interpreteerbaarheid: weten in welke taal of talen een informatieobject gesteld is. 
+Beschikbaarheid: het vermelden van de taal of talen waarin het informatieobject gesteld is draagt bij aan digitoegankelijkheid en komt tegemoet aan WCAG 2.1."""@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Taal"@nl ;
+  rdfs:range xsd:language ;
+  rdfs:seeAlso dcterms:language ;
+  skos:definition "De taal waarin het informatieobject gesteld is."@nl ;
+  skos:scopeNote "De eisen die worden gesteld aan toegankelijkheid van digitale informatie zijn voor de overheid uitgewerkt in het Tijdelijk besluit digitale toegankelijkheid overheid. In het besluit wordt gerefereerd aan de Web Content Accessibility Guidelines (WCAG), versie 2.1."@nl ;
+.
+mdto:termijnEinddatum
+  rdf:type owl:DatatypeProperty ;
+  mdto:regels """1.	Als termijnEinddatum geen waarde heeft, dan hebben termijnTriggerStartLooptijd en termijnLooptijd beiden een waarde.
+2.	Als termijnStartdatumLooptijd en looptijd beiden een waarde hebben, dan geldt termijnEinddatum = termijnStartdatumLooptijd + termijnLooptijd.
+3.	Als termijnLooptijd een waarde heeft, dan is de periode tussen de huidige datum en de termijnEinddatum minimaal de looptijd."""@nl ;
+  rdfs:domain mdto:TermijnGegevens ;
+  rdfs:label "Einddatum"@nl ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          xsd:date
+          xsd:gYear
+          xsd:gYearMonth
+        ) ;
+    ] ;
+  skos:definition "Datum waarop de termijn eindigt."@nl ;
+  skos:scopeNote "Als de einddatum bekend is wordt deze meteen ingevuld. In dat geval hoeven de andere attributen geen waarde te hebben. Een einddatum kan afhankelijk zijn van een gebeurtenis die nog plaats moet vinden (de trigger). In dat geval heeft termijnEinddatum nog geen waarde en wordt de einddatum bepaald door termijnTriggerStartLooptijd en termijnLooptijd."@nl ;
+.
+mdto:termijnLooptijd
+  rdf:type owl:DatatypeProperty ;
+  mdto:regels "Zie regels bij termijnEinddatum."@nl ;
+  rdfs:domain mdto:TermijnGegevens ;
+  rdfs:label "Looptijd"@nl ;
+  rdfs:range xsd:duration ;
+  skos:definition "De hoeveelheid tijd waarin de termijnEinddatum bereikt wordt, nadat de trigger heeft plaatsgevonden."@nl ;
+  skos:scopeNote "Zie de toelichting op termijnTriggerStartLooptijd."@nl ;
+.
+mdto:termijnStartdatumLooptijd
+  rdf:type owl:DatatypeProperty ;
+  mdto:regels "Zie regels bij termijnEinddatum."@nl ;
+  rdfs:domain mdto:TermijnGegevens ;
+  rdfs:label "Startdatum looptijd"@nl ;
+  rdfs:range xsd:date ;
+  skos:definition "De datum waarop de trigger heeft plaatsgevonden en de looptijd is gestart."@nl ;
+  skos:scopeNote """Als de trigger nog niet heeft plaatsgevonden, dan heeft termijnStartdatumLooptijd geen waarde.
+
+Zie ook de toelichting op termijnTriggerStartLooptijd."""@nl ;
+.
+mdto:termijnTriggerStartLooptijd
+  rdf:type owl:ObjectProperty ;
+  mdto:regels "Zie regels bij termijnEinddatum."@nl ;
+  rdfs:domain mdto:TermijnGegevens ;
+  rdfs:label "Trigger start looptijd"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "Gebeurtenis waarna de looptijd van de termijn start."@nl ;
+  skos:scopeNote """Soms is de einddatum van de termijn afhankelijk van een gebeurtenis. Vanaf die gebeurtenis (de trigger) start dan een bepaalde periode (de looptijd) voordat het einde van de termijn is bereikt.
+
+Een trigger kan verwijzen naar de context van het informatieobject. Zoals de auteur of genoemde personen. Deze contextgegevens kunnen opgenomen worden in de betreffende attributen. Zoals bij Betrokkene. Waar dat niet mogelijk is, kan beperkingGebruikNadereBeschrijving gebruikt worden."""@nl ;
+.
+mdto:trefwoord
+  rdf:type owl:DatatypeProperty ;
+  mdto:doel "Vindbaarheid: Op basis van trefwoorden kan een informatieobject makkelijker gevonden worden."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Trefwoord"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "Trefwoord dat aan het informatieobject is toegekend."@nl ;
+  skos:scopeNote "Het staat archiefvormers vrij om trefwoorden te kiezen, hier is geen sprake van een begrippenlijst met toegestane trefwoorden. Waar wel sprake is van een gecontroleerde begrippenlijst, kan classificatie gebruikt worden."@nl ;
+.
+mdto:verwijzingIdentificatie
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain mdto:VerwijzingGegevens ;
+  rdfs:label "Naam"@nl ;
+  rdfs:range mdto:IdentificatieGegevens ;
+  skos:definition "De identificatie van het object waarnaar verwezen wordt."@nl ;
+  skos:scopeNote "Zie het attribuut identificatie bij Object."@nl ;
+.
+mdto:verwijzingNaam
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain mdto:VerwijzingGegevens ;
+  rdfs:label "Naam"@nl ;
+  rdfs:range xsd:string ;
+  skos:definition "De naam van het object waarnaar verwezen wordt."@nl ;
+  skos:scopeNote "Zie het attribuut naam bij Object."@nl ;
+.
+mdto:waardering
+  rdf:type owl:ObjectProperty ;
+  mdto:doel "Beschikbaarheid: geeft een indicatie of het informatieobject tijdelijk of blijvend beschikbaar dient te zijn."@nl ;
+  rdfs:domain mdto:Informatieobject ;
+  rdfs:label "Waardering"@nl ;
+  rdfs:range mdto:BegripGegevens ;
+  skos:definition "De waardering van het informatieobject volgens de van toepassing zijnde en vastgestelde selectielijst."@nl ;
+  skos:scopeNote """De waardering biedt de mogelijkheid om onderscheid te maken tussen blijvend te bewaren en tijdelijk te bewaren (oftewel op termijn te vernietigen) informatieobjecten. Daar waar bij een tijdelijk te bewaren informatieobject de periode, begin- en of einddatum en trigger van belang (kunnen) zijn, geldt dat niet voor blijvend te bewaren informatieobjecten.
+
+Als onbekend is of er een waardering is of wat de aard van de waardering is, dan wordt de waarde ‘Nader te bepalen’ gebruikt."""@nl ;
+.
