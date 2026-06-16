@@ -1,8 +1,8 @@
-# MDTO
+<div><h2>MDTO</h2></div>
 
 Deze repository vormt onderdeel van MDTO (Metagegevens voor Duurzaam Toegankelijke Overheidsinformatie). MDTO is een Nederlandse standaard voor het vastleggen van metagegevens bij overheidsinformatie, zodat deze vindbaar, beschikbaar, leesbaar, interpreteerbaar, betrouwbaar en toekomstbestendig is voor iedereen die daartoe gerechtigd is.
 
-## Welke onderdelen van MDTO zijn normerend?
+<div><h4><small>Welke onderdelen van MDTO zijn normerend?</small></h4></div>
 
 <details><summary><b>Klik hier om te zien Welke onderdelen van MDTO normerend zijn.</b></summary>
 <br>
@@ -16,7 +16,7 @@ MDTO bestaat uit een aantal modules waarvan een deel behoort tot de norm en een 
 | [Specificatie Submission Information Package (SIP)](https://nationaalarchief.github.io/MDTO-SIP-specificatie/) | Een SIP is een verzameling informatieobjecten met bijbehorende representaties en metagegevens voor uitwisseling tussen informatiesystemen.   | Norm        |
 | [Definitie van MDTO-conform](https://nationaalarchief.github.io/MDTO-Conform/)                                 | Uitleg wanneer een informatiesysteem aan MDTO voldoet.                                                                                       | Norm        |
 | [Aanleverproces Submission Information Package](https://nationaalarchief.github.io/MDTO-SIP-aanleverproces/)   | Beschrijving van het proces om een SIP uit te wisselen tussen twee informatiesystemen.                                                       | Handreiking |
-| RDF-ontologie                                                                                                  | Beschrijving van het metagegevensschema in RDF.                                                                                              | Handreiking |
+| [RDF-ontologie](https://nationaalarchief.github.io/MDTO-RDF/)                                                                                              | Beschrijving van het metagegevensschema in RDF.                                                                                              | Handreiking |
 | [Mapping van TMLO/TMR naar MDTO](https://nationaalarchief.github.io/MDTO-Mapping-TMLO-TMR/)                    | Beschrijving hoe bestaande TMLO- en TMR-metagegevens vertaald worden naar MDTO-metagegevens.                                                 | Handreiking |
 
 Ten slotte zijn er, ter informatie, een aantal niet-normerende bijlages:
@@ -29,7 +29,7 @@ Ten slotte zijn er, ter informatie, een aantal niet-normerende bijlages:
   https://nationaalarchief.github.io/MDTO-Veelgestelde-vragen/
 </details>
 
-## Kennisproducten Nationaal Archief
+<div><h4><small>Kennisproducten Nationaal Archief</small></h4></div>
 <details><summary><b>Klik hier voor informatie over kennisproducten van het Nationaal Archief.</b></summary>
 <br>
 De norm MDTO is één van de kennisproducten van het Nationaal Archief die overheidsorganisaties in staat stellen om hun informatie duurzaam toegankelijk te maken en houden. Om meer te weten komen over de verschillende kennisproducten en de onderwerpen waarvoor zij oplossingen bieden, ga naar: https://www.nationaalarchief.nl/archiveren/kennisbank/catalogus-kennisproducten-0
