@@ -50,3 +50,7 @@ th {
     white-space: nowrap;
     /* voorkomt extra uitrekken */
 }
+/* Hide the automatic ReSpec details metadata so custom markdown can replace it */
+.head details {
+    display: none !important;
+}
